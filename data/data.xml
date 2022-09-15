@@ -1,0 +1,11 @@
+<!-- <?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id="demo_999" model="todo.checklist">
+            <field name="name">Assignment from Hashmicro</field>
+        </record>
+        
+    
+    </data>
+    
+</odoo> -->
