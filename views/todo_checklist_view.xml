@@ -33,6 +33,17 @@
             </form>
         </field>
     </record>
+    
+    <!-- todo.checklist search view -->
+    <record id="todo_checklist_view_search" model="ir.ui.view">
+        <field name="name">todo.checklist.view.search</field>
+        <field name="model">todo.checklist</field>
+        <field name="arch" type="xml">
+            <search string="Todo Checklist">
+                <filter string="Tags" name='tags' context="{'group_by':'tag_ids'}"/>
+            </search>
+        </field>
+    </record>
 
     <record id="view_todo_checklist_tree" model="ir.ui.view">
         <field name="name">todo.checklist.tree</field>
@@ -113,5 +124,17 @@
         <field name="view_id" ref="view_todo_checklist_tree" />
     </record>
 
-    <menuitem id="menu_todo_checklist" name="Todo Checklist" parent="todolist_menu_root" action="action_todo_checklist" sequence="2" />
+    <record id="action_todo_tags_checklist" model="ir.actions.act_window">
+        <field name="name">Todo Checklist Grouped by Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">todo.checklist</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_tags': 1}</field>
+        <field name="view_id" ref="view_todo_checklist_tree" />
+    </record>
+    
+    <menuitem id="menu_todo_all_checklist" name="All Checklist" parent="menu_todo_checklist" action="action_todo_checklist" sequence="2" />
+    <menuitem id="menu_todo_tags_checklist" name="Checklist by Tags" parent="menu_todo_checklist" action="action_todo_tags_checklist" sequence="4" />
+    <menuitem id="menu_todo_checklist" name="Todo Checklist" parent="todolist_menu_root" sequence="2" />
 </odoo>
